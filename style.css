@@ -1,0 +1,1663 @@
+/* ==========================================================================
+   emilyhegland.com
+   Near-white surfaces, quiet serif, one warm accent. Palette, type, and layout
+   all resolve to the variables below, so retuning the whole site means editing
+   this one block.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap');
+
+:root {
+  /* Near-white neutrals with a trace of warmth, so it reads white rather
+     than cream and never tips blue. */
+  --paper:        #FCFBFA;
+  --paper-deep:   #F4F3F1;
+  --paper-card:   #FFFFFF;
+  --ink:          #23211F;
+  --ink-soft:     #57544F;
+  --ink-faint:    #8C8880;
+  --rule:         #E5E2DD;
+
+  /* Accents muted, earthy */
+  --clay:         #B0603F;
+  --clay-deep:    #8E4A2E;
+  --sage:         #77856F;
+  --ochre:        #C08A2E;
+
+  /* Type. Newsreader is a quiet, low-contrast reading serif: conventional
+     ampersand, restrained italic, no display flourishes. */
+  --display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --body:    'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Wordmark only. A heavy seventies display face, used once per page. The
+     fallback is the display serif so the swap is less jarring than a system
+     default would be. */
+  --mark:    'Shrikhand', Georgia, serif;
+
+  /* Spacing scale */
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2.5rem;
+  --s5: 4rem;
+  --s6: 6.5rem;
+
+  --max:      1200px;
+  --max-prose: 66ch;
+  --radius:   3px;
+}
+
+/* --------------------------------------------------------------- reset --- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--clay-deep); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+/* ---------------------------------------------------------------- type --- */
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--s2);
+  font-optical-sizing: auto;
+}
+
+/* Newsreader runs a little lighter than Fraunces at display sizes, so h1 gets
+   a touch more size and h2 a touch more weight to hold the hierarchy. */
+/* Capped at 3.75rem so the longest headline on the site, "Short words make the
+   biggest impact", holds a single line at full content width. */
+h1 { font-size: clamp(2.25rem, 5.4vw, 3.75rem); }
+h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 600; }
+h3 { font-size: 1.375rem; font-weight: 600; letter-spacing: 0; }
+
+/* No orphans. balance evens out line lengths across a heading so the last line
+   never ends up holding a single word. pretty does the same job for running
+   copy, where balancing every line would look fussy. */
+h1, h2, h3, .foot-cta__link, .card h3, .journal { text-wrap: balance; }
+p, .lede, .card__note, .caption, .fineprint { text-wrap: pretty; }
+
+p { margin: 0 0 var(--s2); }
+p:last-child { margin-bottom: 0; }
+
+.prose { max-width: var(--max-prose); }
+.prose p { margin-bottom: var(--s3); }
+
+.lede {
+  font-size: clamp(1.1875rem, 2.1vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+/* Case study summaries run longer than a hero line, so they get more measure. */
+.cs-head .lede { max-width: 60ch; }
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 var(--s2);
+}
+
+.eyebrow--clay { color: var(--clay); }
+
+/* -------------------------------------------------------------- layout --- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.section { padding-block: var(--s5); }
+.section--tight { padding-block: var(--s4); }
+.section--deep { background-color: var(--paper-deep); }
+
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+/* ------------------------------------------------------------ nav/head --- */
+
+.site-head {
+  padding-block: var(--s3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-head__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+/* Negative tracking is the point. Phototype in the seventies was the first
+   technology that let designers pull letters into each other, and that tightness
+   is what reads as period. Kept at -0.035em rather than the -0.045em used in the
+   large preview, because at header size the same em value bites harder. */
+.wordmark {
+  font-family: var(--mark);
+  font-size: 1.3125rem;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  color: var(--clay-deep);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.wordmark:hover,
+.wordmark:focus-visible { color: var(--ink); }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+}
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover { color: var(--ink); border-bottom-color: var(--rule); }
+.nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--clay); }
+
+/* ---------------------------------------------------------------- hero --- */
+
+/* Bottom padding is deliberately small: the section that follows already brings
+   its own top padding, so anything larger here doubles up and pushes the content
+   away from the heading it belongs to. The homepage sets its own padding via
+   .hero--home, so it is unaffected. */
+.hero { padding-block: clamp(2.25rem, 5.5vw, 4rem) var(--s2); }
+/* No measure cap: the headline gets the full content width so it can hold one
+   line on desktop. balance handles the wrap gracefully on narrower screens,
+   where a 35-character line cannot fit at any readable size. */
+.hero h1 { text-wrap: balance; }
+.hero h1 em { font-style: italic; color: var(--clay-deep); }
+.hero .lede { margin-top: var(--s3); }
+
+/* Disciplines list. This reset was deleted along with the old portrait rules,
+   which is what put the bullets back. */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--ink-faint);
+}
+
+.hero__meta li + li::before {
+  content: '\00b7';
+  margin-right: var(--s2);
+  color: var(--rule);
+}
+
+/* Framed photo. A thin bracket runs along the top and right edges of the picture,
+   offset outward. It is drawn on a wrapper around the image, not on the figure,
+   because the figure also contains the caption and a frame sized to the figure
+   would cut straight through it.
+
+   Two sides only. A full rectangle needs a bottom edge, and the bottom edge is
+   exactly where a caption wants to go. */
+.framed { margin: 0; }
+
+.framed__img { position: relative; display: block; }
+
+/* inset: top right bottom left. Negative values push the bracket past the edge;
+   the positive bottom and left values decide where its two legs stop. */
+.framed__img::before {
+  content: '';
+  position: absolute;
+  inset: -16px -16px 30% 30%;
+  border-top: 1px solid var(--clay);
+  border-right: 1px solid var(--clay);
+  border-top-right-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.framed__img img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.framed figcaption { position: relative; z-index: 1; }
+
+@media (max-width: 620px) {
+  .framed__img::before { inset: -12px -12px 30% 30%; }
+}
+
+/* ------------------------------------------------------ about page open --- */
+/* Magazine feature opener. The kicker runs full width, then the headline and the
+   first line of body copy start on the same horizontal line. That shared top
+   edge is the whole effect, and it is why the eyebrow had to come out of the
+   left column: with it in there the two columns could only align at the kicker,
+   which put the copy above the headline instead of level with it. */
+
+.about-open { padding-block: clamp(1.5rem, 3.5vw, 2.5rem) var(--s4); }
+.about-open > .wrap > .eyebrow { margin-bottom: var(--s2); }
+
+.about-open__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s5) var(--s4);
+  align-items: start;
+}
+
+/* The gap between the headline and the photo below it. Larger than the default
+   h1 margin, so the headline reads as a headline and not as a photo caption. */
+.about-open__lead h1 { margin-bottom: var(--s3); }
+
+/* Single column below the point where a half-width measure gets too narrow to
+   read. Stacking order becomes kicker, headline, photo, copy. */
+@media (max-width: 860px) {
+  .about-open__grid { grid-template-columns: minmax(0, 1fr); gap: var(--s4); }
+  .about-open__lead h1 { margin-bottom: var(--s2); }
+}
+
+/* Frame B. The bracket is promoted off the photo and onto the whole left column,
+   so the headline and the picture read as one object rather than two.
+   The homepage hero keeps its bracket on the photo: there the photo sits beside
+   the headline rather than under it, so there is no column to wrap. That split is
+   deliberate. The hero is the only full-viewport section on the site and already
+   behaves unlike every interior page. */
+
+.about-open__lead { position: relative; }
+
+/* The photo gives up its own bracket, or you get two nested corners. */
+.about-open__lead .framed__img::before { display: none; }
+
+.about-open__lead::before {
+  content: '';
+  position: absolute;
+  inset: -22px -16px 20% 30%;
+  border-top: 1px solid var(--clay);
+  border-right: 1px solid var(--clay);
+  border-top-right-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* An absolutely positioned pseudo-element paints above non-positioned text in
+   the same stacking context, so the headline is lifted explicitly. The line does
+   not currently cross it, but it would if the headline ever got longer. */
+.about-open__lead h1 { position: relative; z-index: 1; }
+
+@media (max-width: 620px) {
+  .about-open__lead::before { inset: -16px -12px 20% 30%; }
+}
+
+/* ------------------------------------------------------------- film grade --- */
+/* Applied to photographs of Emily and nothing else. The textile pieces and the
+   M1 screens stay untouched: on those, the colour is the evidence.
+   This is a filter, not a re-export. The files on disk are still true, so the
+   lightbox shows real colour on click and this can be dialled or deleted
+   without touching a single image. */
+
+.film { filter: sepia(0.14) saturate(1.08); }
+
+/* Grain variant. Add `framed--grain` to the <figure> to switch a portrait from
+   warm wash to warm-plus-grain. Hangs off ::after because ::before is already
+   drawing the bracket. */
+.framed--grain .framed__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* -------------------------------------------------------- homepage hero --- */
+/* Only the homepage hero fills the viewport. Every other page uses the plain
+   .hero, which is a kicker and a heading and nothing else. */
+
+.hero--home {
+  padding-block: clamp(3rem, 7vw, 6rem);
+  min-height: calc(100svh - 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero--home > .wrap { width: 100%; }
+
+/* Text left, portrait right. Source is 700px wide, so a 340px column gives 2x
+   for retina. Past about 350px it starts to soften. */
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  gap: var(--s5);
+  align-items: center;
+}
+
+/* Layout only. The frame itself lives in .framed, shared with the About page. */
+.hero__photo {
+  justify-self: end;
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .hero__grid { grid-template-columns: 1fr; gap: var(--s4); }
+  .hero__photo { justify-self: start; max-width: 230px; }
+}
+
+/* 5.25rem is the largest size at which "Short words make" still holds one line
+   inside the text column once the 340px photo column is subtracted. At 6rem it
+   broke to three lines. */
+.hero--home h1 {
+  font-size: clamp(2.5rem, 5.6vw, 5.25rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+  text-wrap: balance;
+  margin-bottom: 0;
+}
+
+/* Kicker earns its keep on letterspacing rather than colour. */
+.hero--home .eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  margin-bottom: var(--s3);
+}
+
+/* Supporting matter stays deliberately small against the headline. The whole
+   effect depends on that gap being wide, so scaling the bio alongside the
+   headline would cancel it out. */
+.hero--home .hero__bio {
+  display: block;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+/* The bio is 96 characters, so the measure has to clear that to hold one line.
+   That is wider than a comfortable reading measure, which is fine here: at one
+   line under a 96px headline it reads as a deck, not a paragraph. It wraps
+   normally on anything narrower. */
+.hero--home .lede {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 100ch;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.hero--home .hero__meta {
+  margin-top: var(--s2);
+  font-size: 0.75rem;
+}
+
+/* Centred within the text column, so it does not read as off-centre against the
+   photo sitting to its right. */
+.hero__cta {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.hero__cta .btn {
+  font-size: 0.9375rem;
+  padding: 0.85rem 2.25rem;
+}
+
+@media (max-width: 760px) {
+  .hero--home h1 { max-width: none; }
+  .hero--home { min-height: 0; }
+  .hero--home .lede { max-width: none; }
+}
+
+/* ---------------------------------------------------------------- grid --- */
+
+.grid {
+  display: grid;
+  gap: var(--s4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+.grid--two { grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+
+/* Text-only card. Two of the three homepage assets are images of copy, and any
+   crop small enough for a card slices the type. Rather than show sliced words on
+   a page about writing, the cards carry the line and the work images live on the
+   copywriting page where they have room to be read. */
+.card--text .card__body {
+  padding: var(--s4) var(--s3) var(--s3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 15rem;
+}
+
+.card--text h3 {
+  font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+  font-weight: 500;
+  margin: 0;
+}
+
+.card--text .card__note { margin: 0.35rem 0 0; }
+
+/* Pushes the affordance to the bottom so the three cards align regardless of
+   how long the teaser runs. */
+.card--text .card__more {
+  margin-top: auto;
+  padding-top: var(--s3);
+  font-family: var(--body);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.card--text:hover .card__more { color: var(--clay-deep); }
+
+/* --------------------------------------------------------------- cards --- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink-faint);
+  box-shadow: 0 10px 28px -18px rgba(35, 33, 31, 0.40);
+}
+
+.card__media {
+  aspect-ratio: 4 / 3;
+  background: var(--paper-deep);
+  overflow: hidden;
+}
+
+.card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* A full-page screenshot cropped to a 4:3 box shows a band from the middle of
+   the page, which reads as a random slice. Anchoring to the top keeps the
+   headline visible, and the fade says the page continues rather than pretending
+   the crop was the whole thing. Video stills keep the centred crop, since they
+   are already the right shape. */
+.card__media--page { position: relative; }
+.card__media--page img { object-position: top center; }
+.card__media--page::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--paper-card) 94%);
+}
+
+.card__body { padding: var(--s3); }
+
+.card__kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 var(--s1);
+}
+
+.card h3 { margin-bottom: var(--s1); }
+
+.card__note {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------ workitem --- */
+/* Wide editorial row used on section index pages. */
+
+.workitem {
+  display: grid;
+  gap: var(--s3) var(--s4);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: start;
+  padding-block: var(--s4);
+  border-top: 1px solid var(--rule);
+}
+
+.workitem:last-of-type { border-bottom: 1px solid var(--rule); }
+.workitem--flip > .workitem__media { order: 2; }
+
+.workitem__media img {
+  width: 100%;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.workitem__text h3 { font-size: clamp(1.375rem, 2.4vw, 1.875rem); }
+
+.workitem__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  padding: 0.2rem 0.65rem;
+  background: var(--paper);
+}
+
+/* --------------------------------------------------------------- video --- */
+
+.video-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.video-embed iframe,
+.video-embed video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Without this the video defaults to object-fit: contain, which letterboxes
+   against the container's exact aspect ratio. The container gets its height from
+   aspect-ratio applied to a fractional width, so the two disagree by a fraction
+   of a pixel and the gap renders as thin dark lines down the sides. Every video
+   on the site matches its container's ratio exactly, so cover fills the box and
+   crops nothing. Verified 21 Aug: bull is 3:2 in a 3:2 frame, the other three
+   are 16:9 in 16:9 frames. */
+.video-embed video { object-fit: cover; }
+
+/* Pale videos. The default container background is near-black, which is right
+   behind a TV spot and wrong behind a screen recording of a white page: it
+   flashes dark while the file loads. */
+.video-embed--light { background: var(--paper-deep); }
+.poster--light { background: var(--paper-deep); }
+
+/* Visible placeholder so a missing embed never renders as a blank box. */
+.video-embed--todo {
+  display: grid;
+  place-items: center;
+  background: var(--paper-deep);
+  color: var(--ink-faint);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: var(--s3);
+}
+
+.caption {
+  margin: var(--s2) 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.caption strong { color: var(--ink); font-weight: 600; }
+
+/* ========================================================================== */
+/* MOTION COMPONENTS                                                          */
+/* Four ways to show animation. Pick per asset see motion-patterns.html.    */
+/* ========================================================================== */
+
+/* --- 1. Silent looping clip -----------------------------------------------
+   For short motion: a banner animating, type building, a logo resolving.
+   Autoplays, no controls, no sound. Behaves like a moving image. */
+
+.loop {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+
+.loop video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Ratio variants set one so the page doesn't reflow while loading. */
+.loop--16x9 { aspect-ratio: 16 / 9; }
+.loop--1x1  { aspect-ratio: 1 / 1; }
+.loop--4x5  { aspect-ratio: 4 / 5; }
+.loop--wide { aspect-ratio: 21 / 9; }
+
+.loop--16x9 video,
+.loop--1x1 video,
+.loop--4x5 video,
+.loop--wide video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 2. Phone frame -------------------------------------------------------
+   For app flows and product motion. The frame does a lot of work: it tells
+   the viewer "this is a real product" before they read a word. */
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+  aspect-ratio: 9 / 19.5;
+  background: var(--ink);
+  border-radius: 34px;
+  padding: 9px;
+  box-shadow: 0 18px 44px -22px rgba(35, 33, 31, 0.50);
+}
+
+.phone__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--paper-card);
+}
+
+.phone__screen video,
+.phone__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Speaker notch. Purely decorative. */
+.phone::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 5px;
+  border-radius: 100px;
+  background: rgba(252, 251, 250, 0.22);
+  z-index: 2;
+}
+
+.phone-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.phone-row > figure { margin: 0; flex: 0 1 260px; }
+
+/* --- 3. Lottie stage ------------------------------------------------------
+   For vector animation exported from After Effects via Bodymovin. Stays
+   crisp at any size and weighs a few KB. Needs the lottie-web script. */
+
+.lottie {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lottie--square { aspect-ratio: 1 / 1; }
+
+/* --- 4. Click-to-play poster ---------------------------------------------
+   For long or sound-on video (TV spots). Loads a still image only; the real
+   player arrives when clicked. Keeps a page with six spots on it fast. */
+
+.poster {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 0;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease, opacity 300ms ease;
+}
+
+.poster:hover img { transform: scale(1.03); opacity: 0.85; }
+
+.poster__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.poster__play span {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: rgba(252, 251, 250, 0.94);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.5);
+  transition: transform 200ms ease;
+}
+
+.poster:hover .poster__play span { transform: scale(1.09); }
+
+.poster__play svg { width: 20px; height: 20px; margin-left: 3px; fill: var(--ink); }
+
+.poster__label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: var(--s3);
+  background: linear-gradient(to top, rgba(18, 18, 17, 0.82), transparent);
+  color: #FCFBFA;
+  font-size: 0.875rem;
+  text-align: left;
+  pointer-events: none;
+}
+
+.poster__label strong { display: block; font-size: 1rem; }
+
+/* Ratio variants. "Bull" is a 720x480 broadcast master (3:2), so forcing it
+   into a 16:9 frame would crop the line off the top and bottom. */
+.poster--3x2 { aspect-ratio: 3 / 2; }
+.video-embed--3x2 { aspect-ratio: 3 / 2; }
+
+/* Self-hosted player swapped in by the click handler. */
+.video-embed video { background: var(--ink); }
+
+/* Spot listing: poster, then the lines underneath. The copy is the point, so it
+   gets real typographic treatment instead of a one-line caption. */
+.spot { display: block; }
+.spot + .spot { margin-top: var(--s5); }
+
+.spot__lines {
+  margin: var(--s3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spot__lines li {
+  font-family: var(--display);
+  font-size: clamp(1.0625rem, 1.7vw, 1.375rem);
+  line-height: 1.38;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 0.3rem 0 0.3rem var(--s3);
+  border-left: 2px solid var(--rule);
+}
+
+.spot__lines li:first-child { border-left-color: var(--clay); }
+
+.spot__lines li span {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.2rem;
+}
+
+.spot__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s3);
+  margin: var(--s2) 0 0;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* --- Motion accessibility -------------------------------------------------
+   Anyone who has asked their OS to reduce motion gets a still frame instead
+   of a loop. Non-negotiable: autoplaying motion triggers migraines and
+   vestibular symptoms for a real slice of your audience. */
+
+@media (prefers-reduced-motion: reduce) {
+  .loop video { animation-play-state: paused; }
+  .poster img, .poster:hover img { transition: none; transform: none; }
+  .poster:hover .poster__play span { transform: none; }
+}
+
+/* ========================================================================== */
+/* LIGHTBOX                                                                   */
+/* Click any work image to open it full-screen. Direct mail and print          */
+/* collages are unreadable at grid size, which defeats the purpose of showing  */
+/* them, so enlarging is not a nicety here.                                   */
+/* ========================================================================== */
+
+/* Affordance on the page. The cursor and a quiet corner badge tell people the
+   image is clickable without adding visual clutter. */
+.zoom-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.zoom-btn img { transition: transform 300ms ease; }
+.zoom-btn:hover img { transform: scale(1.015); }
+
+.zoom-btn::after {
+  content: 'Enlarge';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-family: var(--body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(252, 251, 250, 0.94);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  padding: 0.25rem 0.6rem;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.zoom-btn:hover::after,
+.zoom-btn:focus-visible::after { opacity: 1; }
+
+.zoom-btn:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* --- The overlay ---------------------------------------------------------- */
+
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  background: rgba(20, 20, 19, 0.95);
+  padding: clamp(0.75rem, 3vw, 2rem);
+}
+
+.lb[open], .lb.is-open { display: grid; grid-template-rows: auto 1fr auto; }
+
+.lb__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+  color: #F2F1EF;
+  font-size: 0.8125rem;
+}
+
+.lb__count { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.6875rem; opacity: 0.7; }
+
+.lb__stage {
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  min-height: 0;
+  padding-block: var(--s2);
+}
+
+.lb__stage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  background: var(--paper);
+}
+
+/* Actual-size mode. For a direct mail collage the fine print only becomes
+   legible past 100%, so the stage scrolls rather than shrinking to fit. */
+.lb.is-zoomed .lb__stage { place-items: start center; }
+.lb.is-zoomed .lb__stage img {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  cursor: zoom-out;
+}
+
+.lb__cap {
+  color: #F2F1EF;
+  font-size: 0.875rem;
+  text-align: center;
+  max-width: 70ch;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+.lb__cap strong { display: block; font-family: var(--display); font-size: 1.0625rem; font-weight: 500; margin-bottom: 0.2rem; }
+
+.lb button {
+  font-family: var(--body);
+  font-size: 0.8125rem;
+  color: #F2F1EF;
+  background: rgba(242, 241, 239, 0.12);
+  border: 1px solid rgba(242, 241, 239, 0.28);
+  border-radius: 100px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.lb button:hover { background: rgba(242, 241, 239, 0.24); }
+.lb button:focus-visible { outline: 2px solid #F2F1EF; outline-offset: 2px; }
+.lb__nav { display: flex; gap: var(--s1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-btn img, .zoom-btn:hover img { transition: none; transform: none; }
+}
+
+/* ========================================================================== */
+/* COPY DECK                                                                  */
+/* For web copy. A page screenshot is a tall unreadable strip that credits the */
+/* designer as much as the writer, so the page gets shown as the copy deck it  */
+/* was delivered as: element label on the left, the actual words at readable    */
+/* size on the right, decisions annotated alongside.                          */
+/* ========================================================================== */
+
+.deck {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-card);
+  overflow: hidden;
+  margin: var(--s4) 0;
+}
+
+.deck__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s3);
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--s3);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+
+.deck__head h3 { margin: 0; font-size: 1.25rem; }
+
+.deck__url {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  word-break: break-all;
+}
+
+/* One row per copy element. */
+.deck__row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: var(--s3);
+  padding: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.deck__row:first-of-type { border-top: 0; }
+
+.deck__label {
+  font-family: var(--body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 0.35rem;
+}
+
+.deck__copy { min-width: 0; }
+
+/* Copy set at the weight it carried on the page, so hierarchy is visible. */
+.deck__copy .h1 {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.deck__copy .h2 {
+  font-family: var(--display);
+  font-size: clamp(1.1875rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.deck__copy .sub {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.deck__copy .body { font-size: 0.9375rem; line-height: 1.6; margin: 0; }
+
+/* A module inside a deck, in the three tiers the source page actually uses:
+   the client's product name as a kicker, the module headline, then the body.
+   Flattening these into a bold run-in lost the hierarchy and needed a period to
+   hold the seam, which Emily rightly disliked.
+
+   The kicker is clay, not the sage used by .deck__note. Sage means "Emily's
+   annotation" everywhere else in a deck, and a product name is the client's
+   content, not commentary. Keeping the two colours apart keeps that distinction
+   legible. */
+.deck__item + .deck__item { margin-top: var(--s3); }
+
+.deck__item .kicker {
+  font-family: var(--body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 0.65rem;
+}
+
+.deck__item .h3 {
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+/* An annotation following the last module needs more air than the modules give
+   each other, or the note reads as a fourth module. */
+.deck__item + .deck__note { margin-top: var(--s4); }
+
+/* A mock CTA needs room off the headline above it, or the button reads as
+   punctuation on the end of the sentence. */
+.deck__cta { margin: var(--s3) 0 0; }
+
+/* Quieter than a standalone image caption. This one sits under a video and
+   explains what to look for, so it needs to read as an aside rather than as
+   another paragraph of body copy. */
+.caption--tight {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  max-width: 62ch;
+}
+.deck__copy p + p { margin-top: var(--s2); }
+
+.deck__copy .cta {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 100px;
+  padding: 0.45rem 1.1rem;
+}
+
+/* Annotation. Where the reasoning goes, which is the part worth hiring. */
+.deck__note {
+  margin: var(--s2) 0 0;
+  padding-left: var(--s2);
+  border-left: 2px solid var(--sage);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.deck__note strong {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.2rem;
+}
+
+/* "What I cut" block. Struck-through copy that did not ship. */
+.deck__cut {
+  padding: var(--s3);
+  border-top: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+
+.deck__cut ul { list-style: none; margin: var(--s2) 0 0; padding: 0; }
+
+.deck__cut li {
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  padding: 0.2rem 0;
+}
+
+/* Compact index for the many pages that don't get a full deck. */
+.page-index {
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.page-index li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s3);
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
+
+.page-index span { color: var(--ink-faint); font-size: 0.8125rem; }
+
+/* The index carries live links. No underline: a border-bottom here lands in the
+   same weight and colour as the row dividers, so nine short rules fight nine
+   full-width ones. This follows .linklist on the published works page, which had
+   the same problem and solved it with colour on hover instead. */
+.page-index a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.page-index a:hover,
+.page-index a:focus-visible { color: var(--clay-deep); }
+
+@media (max-width: 640px) {
+  .deck__row { grid-template-columns: 1fr; gap: var(--s1); }
+  .deck__label { padding-top: 0; }
+}
+
+/* ----------------------------------------------------------- casestudy --- */
+
+.cs-head { padding-block: var(--s5) var(--s4); }
+.cs-head h1 { max-width: 26ch; }
+
+.cs-facts {
+  display: grid;
+  gap: var(--s3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.cs-facts dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.35rem;
+}
+
+.cs-facts dd { margin: 0; font-size: 0.9375rem; }
+
+.cs-block { padding-block: var(--s4); }
+.cs-block h2 { font-size: clamp(1.375rem, 2.6vw, 1.875rem); }
+
+/* Pull-quote / hero line of copy. Use for actual headlines she wrote. */
+.copy-specimen {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3.6vw, 2.375rem);
+  line-height: 1.24;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+  max-width: 30ch;
+  margin: var(--s4) 0;
+  padding-left: var(--s3);
+  border-left: 3px solid var(--clay);
+}
+
+.copy-specimen small {
+  display: block;
+  font-family: var(--body);
+  font-style: normal;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: var(--s2);
+}
+
+/* --------------------------------------------------------------- misc  --- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.8rem 1.6rem;
+  border-radius: 100px;
+  border: 1px solid var(--ink);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.btn:hover { background: var(--clay-deep); border-color: var(--clay-deep); color: var(--paper); }
+
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+
+.stack > * + * { margin-top: var(--s3); }
+.section-head { margin-bottom: var(--s3); }
+.section-head p { color: var(--ink-soft); max-width: 64ch; }
+
+/* Closing line and CTA under a card grid. Left aligned with everything else on
+   the page, and given enough measure that the sentence stays on one line
+   instead of orphaning its last word. */
+.section-more { margin-top: var(--s5); }
+
+/* Homepage picture reel: five square-ish frames running the full width, with the
+   heading doing all the talking. Visuals lead here; the About page carries the
+   prose, so repeating it on the homepage only diluted both. */
+.reel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s2);
+}
+
+.reel figure {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--paper-deep);
+}
+
+.reel img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Empty slot reads as intentional until a photo lands in it. */
+.reel figure:empty,
+.reel .slot {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: var(--s1);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--ink-faint);
+}
+
+/* Below tablet the reel scrolls sideways rather than shrinking to thumbnails. */
+@media (max-width: 760px) {
+  .reel {
+    grid-template-columns: repeat(5, minmax(38%, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: var(--s1);
+    scrollbar-width: thin;
+  }
+  .reel figure { scroll-snap-align: start; }
+}
+
+.section-more p {
+  color: var(--ink-soft);
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+
+.section-more p + p { margin-top: var(--s3); }
+
+/* A lone button with no sentence above it centres cleanly; there is no line of
+   text left to orphan. */
+.section-more--centre { text-align: center; }
+
+/* Full-width work header. Title and tags on the left, intro on the right, so a
+   full-bleed item fills the measure without running body copy to 120 characters. */
+.workitem__head {
+  display: grid;
+  gap: var(--s3) var(--s5);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
+}
+.workitem__head p:not(.card__kicker) { color: var(--ink-soft); text-wrap: pretty; }
+@media (max-width: 760px) {
+  .workitem__head { grid-template-columns: 1fr; }
+}
+
+/* Two published entries side by side. Fiction and poetry are one entry each, so
+   giving them a full-width row apiece left the page mostly air. */
+.pubgrid {
+  display: grid;
+  gap: var(--s3) var(--s5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.pubgrid article { margin: 0; }
+.pubgrid h3 { margin: var(--s2) 0 0.15rem; }
+.pubgrid .pubmeta {
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+  margin: 0 0 0.6rem;
+}
+.pubgrid p { margin: 0 0 var(--s2); }
+
+/* Email grid. Full renders are 1400px and up to 2600 tall, so the grid shows a
+   uniform top-crop that fades out at the bottom, and the click opens the whole
+   piece at full size. src is a 700px preview, data-full is the real render, so
+   the page loads a fifth of the weight. */
+.mailgrid {
+  display: grid;
+  gap: var(--s3) var(--s3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+}
+
+.mail { margin: 0; }
+
+.mail__frame {
+  position: relative;
+  aspect-ratio: 1 / 0.85;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-card);
+}
+
+.mail__frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* The fade says "continues below" honestly, instead of pretending the crop was
+   the whole piece. */
+.mail__frame::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 32%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--paper) 92%);
+}
+
+.mail figcaption {
+  font-family: var(--body);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+  text-wrap: pretty;
+}
+
+.mail figcaption span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.15rem;
+}
+
+/* Journal plate. Stands in for a cover image on published-writing entries, so
+   the page doesn't depend on hotlinked lit-mag artwork. */
+.journal {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  min-height: 7rem;
+  padding: var(--s3);
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--ink-soft);
+}
+.journal span {
+  display: block;
+  font-family: var(--body);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: var(--s2);
+}
+
+/* Textile gallery. Portrait frames because every piece was shot portrait, with
+   the caption carrying title and details underneath. src is a 620px preview and
+   data-full is the large file, so the page stays light and the lightbox is where
+   the detail lives. */
+.gallery {
+  display: grid;
+  gap: var(--s4) var(--s3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+
+.gallery--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+
+.piece { margin: 0; }
+
+.piece__frame {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-deep);
+}
+
+.piece__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.piece figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.piece figcaption strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.piece figcaption span {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.2rem;
+}
+
+/* Link list. Used for the Madison Magazine columns: a lot of titles, no images,
+   and the title is the only thing worth reading. Two columns when there's room. */
+.linklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  column-gap: var(--s5);
+}
+.linklist li { border-top: 1px solid var(--rule); }
+.linklist a {
+  display: block;
+  padding: 0.85rem 0;
+  font-family: var(--display);
+  font-size: 1.125rem;
+  line-height: 1.35;
+  color: var(--ink);
+  text-decoration: none;
+  text-wrap: pretty;
+  transition: color 150ms ease;
+}
+.linklist a:hover, .linklist a:focus-visible { color: var(--clay-deep); }
+.linklist .linklist__src {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.3rem;
+}
+
+/* -------------------------------------------------------------- footer --- */
+
+.site-foot {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--s6) var(--s5);
+  background: var(--paper-deep);
+}
+
+/* The contact moment is the last thing anyone reads, so it gets the largest
+   type on the site. A small setup line, then the invitation at display scale. */
+.foot-cta { margin-bottom: var(--s5); }
+
+.foot-cta__setup {
+  font-family: var(--body);
+  font-size: clamp(1.0625rem, 1.8vw, 1.375rem);
+  color: var(--ink-soft);
+  margin: 0 0 var(--s2);
+}
+
+.foot-cta__link {
+  display: inline-block;
+  font-family: var(--display);
+  font-size: clamp(3rem, 11vw, 8rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  font-optical-sizing: auto;
+  border-bottom: 3px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.foot-cta__link:hover,
+.foot-cta__link:focus-visible {
+  color: var(--clay-deep);
+  border-bottom-color: var(--clay);
+}
+
+.site-foot__inner {
+  display: grid;
+  gap: var(--s4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+}
+
+.contact-list li + li { margin-top: var(--s1); }
+.contact-list a { color: var(--ink); }
+
+.fineprint {
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* Same small quiet type, no rule. .fineprint carries a border-top because it was
+   built for the footer copyright line, which needs separating from the columns
+   above it. Reused under a .page-index the two collide: the last row already has
+   a border-bottom, so you get two rules a few pixels apart. */
+.fineprint--bare {
+  margin-top: var(--s2);
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* ------------------------------------------------------------ narrower --- */
+
+@media (max-width: 720px) {
+  .workitem { grid-template-columns: 1fr; }
+  .workitem--flip > .workitem__media { order: 0; }
+  .lede { max-width: none; }
+  .site-head__inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}

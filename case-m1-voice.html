@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand voice as infrastructure | M1 | Emily Hegland</title>
+<meta name="description" content="Case study: building a modular, versioned brand voice system that gets anyone at M1 to an on-voice first draft. Compliance still reviews every piece.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="wordmark" href="index.html">Emily Hegland</a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="copywriting.html" aria-current="page">Copywriting</a></li>
+        <li><a href="writing.html">Published works</a></li>
+        <li><a href="textiles.html">Textiles</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="cs-head">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--clay">
+        <a href="copywriting.html" style="color: inherit;">← All work</a>
+      </p>
+      <h1>Brand voice as infrastructure</h1>
+      <p class="lede">
+        I'm the only copywriter at M1. So when the company went all-in on AI, I
+        stopped asking whether it could write our copy and started asking what it
+        would need to know to write a draft worth editing. Then I built that.
+      </p>
+
+      <dl class="cs-facts">
+        <div><dt>Client</dt><dd>M1</dd></div>
+        <div><dt>Role</dt><dd>Sr. Brand Copywriter</dd></div>
+        <div><dt>Scope</dt><dd>10 modules, ~1,000 lines, 7 channels</dd></div>
+        <div><dt>Status</dt><dd>Version 9</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap">
+
+    <!-- ========================================================= 1. PROBLEM -->
+    <section class="cs-block">
+      <p class="eyebrow">01 &middot; The problem</p>
+      <h2>One writer, a whole company's worth of copy</h2>
+      <div class="prose">
+        <p>
+          As the sole copywriter at M1, I write almost everything that clients
+          see. Marketing emails, product copy, in-app messages, push
+          notifications, App Store screens&hellip; the list goes on. All of it
+          needs to adhere to two big things: 1) the brand voice and 2) FINRA
+          2210. Every retail communication has to be fair, balanced, and not
+          misleading, with specific disclosures depending on what it's about. I
+          helped shape messaging, voice, and tone amid a brand evolution.
+          There's documentation, but much of the nuance lives in my head.
+        </p>
+        <p>
+          There are two ways that can end. I become the bottleneck for copy
+          review, or I let people inside my head.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ======================================================== 2. THE PROPOSAL -->
+    <section class="cs-block">
+      <p class="eyebrow">02 &middot; The proposal</p>
+      <h2>A better question than &ldquo;can AI write this?&rdquo;</h2>
+      <div class="prose">
+        <p>
+          M1 is a tech company bullish on AI. If you were me, maybe you'd ask:
+          can AI write copy? Is my job obsolete?
+        </p>
+        <p>
+          That's the wrong question. Yes, AI can write copy. That's obvious. I'm
+          not too precious about my role to admit it.
+        </p>
+        <p>
+          The real question is: can AI write copy like a senior brand copywriter
+          with over 10 years of experience and a particular set of pet peeves? And
+          can it avoid triggering too many compliance edits?
+        </p>
+        <p>
+          Turns out it can. If I teach it to.
+        </p>
+        <p>
+          Enter: emilybot, a Claude skill that takes everything I think about
+          while writing copy for the company and uses it to generate solid first
+          drafts.
+        </p>
+        <p>
+          For me, it's not a go-to step in my drafting process. I still have a
+          lot of fun stringing words together from my brain.
+        </p>
+        <p>
+          For people at the company who aren't writers, it gets them a lot closer
+          to how I'd approach a copy draft. That way, they can draft sample copy
+          that starts a lot closer to what I'd say, instead of waiting on me to
+          come up with something.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ==================================================== 3. WHAT I BUILT -->
+    <section class="cs-block">
+      <p class="eyebrow">03 &middot; The build</p>
+      <h2>A voice guide that loads itself</h2>
+      <div class="prose">
+        <p>
+          Usually, a brand voice document gets read once, during onboarding, and
+          then never again. This goes above and beyond that.
+        </p>
+      </div>
+
+      <!-- Architecture diagram. Structure only, no module contents. -->
+      <div style="margin: var(--s4) 0; padding: var(--s4); background: var(--paper-card); border: 1px solid var(--rule); border-radius: var(--radius);">
+        <p style="font-family: var(--body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin-bottom: var(--s2);">Always loaded</p>
+        <div class="grid" style="gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));">
+          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Philosophy</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">North star, audience, how to read a brief</p>
+          </div>
+          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Voice &amp; tone</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">Energy, formality, principles, non-negotiables</p>
+          </div>
+          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Compliance</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">FINRA 2210 patterns, disclosure library</p>
+          </div>
+        </div>
+
+        <p style="font-family: var(--body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin: var(--s3) 0 var(--s2);">Loaded to match the task</p>
+        <ul class="workitem__tags" style="margin: 0;">
+          <li class="tag">Email</li>
+          <li class="tag">Push notifications</li>
+          <li class="tag">In-app messages</li>
+          <li class="tag">Banners in product</li>
+          <li class="tag">Web pages</li>
+          <li class="tag">Blog</li>
+          <li class="tag">UX microcopy</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>
+          It's modular. It always pulls up Philosophy, Voice &amp; tone, and
+          Compliance for every task. Then it pulls up the specific channel based
+          on the task.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ================================================== 4. THE HARD PART -->
+    <section class="cs-block">
+      <p class="eyebrow">04 &middot; The hard part</p>
+      <h2>Compliance and disclosures</h2>
+      <div class="prose">
+        <p>
+          Anyone can write &ldquo;be conversational&rdquo; in a style guide. The
+          hard part is remembering all the rules for staying legally compliant.
+        </p>
+        <p>
+          FINRA 2210 is referenced for do-and-don't patterns: the difference
+          between a guarantee and a possibility, between creating urgency with a
+          real deadline versus manufactured fear, between a factual comparison
+          and an unsubstantiated one. Alongside that, a coded disclosure library
+          organized by product, so the correct language attaches to the correct
+          claim automatically.
+        </p>
+        <p>
+          Disclosures are <strong>scoped by channel</strong>. Requirements that
+          apply to a web page don't apply to in-product copy, and a system that
+          demanded them everywhere would be ignored everywhere. To get it right,
+          I had to understand the rules and collab with the compliance team.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ================================================ 5. THE RULE I'D DEFEND -->
+    <section class="cs-block">
+      <p class="eyebrow">05 &middot; The rule I'd defend</p>
+      <h2>AI that doesn't write like one</h2>
+      <div class="prose">
+        <p>
+          The system includes an explicit prohibition on AI writing patterns: the
+          &ldquo;it's not X, it's Y&rdquo; construction, em-dashes. Basically, if
+          it reads like a language model wrote it, rewrite it.
+        </p>
+        <p>
+          I put that in for a good reason. I didn't want the copy to sound
+          machine-generated. Technically on-brand but&hellip; somehow soulless.
+          And let's be honest, as soon as you send an email with an em-dash,
+          people start yelling &ldquo;AI! AI!&rdquo; (Such a shame. It used to be
+          my favorite punctuation.)
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ===================================================== 6. GOVERNANCE -->
+    <section class="cs-block">
+      <p class="eyebrow">06 &middot; Governance</p>
+      <h2>Versioned like software</h2>
+      <div class="prose">
+        <p>
+          Nine versions so far, each with a changelog noting what changed and
+          why. One named owner.
+        </p>
+        <p>
+          It is built to absorb new products, audience updates, and whatever else
+          arrives. I can add copy phrases that get banned by compliance to the
+          &ldquo;do not say&rdquo; list. Oh, and that means it hasn't stolen my
+          job quite yet.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ======================================================= 7. WHAT CHANGED -->
+    <section class="cs-block">
+      <p class="eyebrow">07 &middot; What changed</p>
+      <h2>Scaling judgment instead of headcount</h2>
+      <div class="prose">
+        <p>
+          The system means someone outside the brand team can produce a credible,
+          mostly compliant first draft without waiting on me. It isn't a
+          substitute for compliance review, which is required for every piece,
+          but it comes close to a draft I'd recognize.
+        </p>
+        <p>
+          My work is spent thinking about big-picture messaging and strategy. I
+          can be editorial rather than in the weeds drafting. It's a skill used
+          for marketing, product design, client experience, blog, and AEO work.
+        </p>
+      </div>
+
+      <!-- Adoption map. Reads as reach at a glance. -->
+      <div style="margin: var(--s4) 0; padding: var(--s4); background: var(--paper-card); border: 1px solid var(--rule); border-radius: var(--radius);">
+        <p class="eyebrow" style="margin-bottom: var(--s3);">Who writes with it</p>
+        <div class="grid" style="gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));">
+          <div style="border-left: 3px solid var(--clay); background: var(--paper-deep); padding: var(--s2);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Brand &amp; marketing</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">The team it was built for</p>
+          </div>
+          <div style="border-left: 3px solid var(--sage); background: var(--paper-deep); padding: var(--s2);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Product design</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">In-product copy and UX writing</p>
+          </div>
+          <div style="border-left: 3px solid var(--sage); background: var(--paper-deep); padding: var(--s2);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Client experience</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">Customer-facing communication</p>
+          </div>
+          <div style="border-left: 3px solid var(--sage); background: var(--paper-deep); padding: var(--s2);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Blog &amp; AEO</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">Long-form and answer-engine content</p>
+          </div>
+          <div style="border-left: 3px solid var(--rule); background: var(--paper-deep); padding: var(--s2);">
+            <strong style="font-family: var(--display); font-size: 1.0625rem;">Everyone else</strong>
+            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">Occasional writers across the org</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="rule">
+
+    <section class="cs-block">
+      <p>
+        <a class="btn btn--ghost" href="copywriting.html">← Back to all work</a>
+      </p>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="site-foot" id="contact">
+  <div class="wrap">
+
+    <div class="foot-cta">
+      <p class="foot-cta__setup"><span data-cycle="[&quot;Tell me what you&rsquo;re reading.&quot;, &quot;What&rsquo;s your Letterboxd top 4?&quot;, &quot;Let&rsquo;s nail down your brand voice.&quot;, &quot;Ask me for a hot take.&quot;, &quot;Wanna go thrifting?&quot;, &quot;Buy me a High Life.&quot;]">Tell me what you&rsquo;re reading.</span></p>
+      <a class="foot-cta__link" href="mailto:efhegland@gmail.com">Get in touch</a>
+    </div>
+
+    <div class="site-foot__inner">
+      <div>
+        <p class="eyebrow">Emily Hegland</p>
+        <ul class="contact-list">
+          <li><a href="mailto:efhegland@gmail.com">efhegland@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/emily-hegland-7918b3ab/">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Elsewhere on this site</p>
+        <ul class="contact-list">
+          <li><a href="copywriting.html">Copywriting</a></li>
+          <li><a href="writing.html">Published works</a></li>
+          <li><a href="textiles.html">Textiles</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fineprint">&copy; <span id="year">2026</span> Emily Hegland</p>
+  </div>
+</footer>
+
+<script src="cycle.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script src="lightbox.js"></script>
+
+</body>
+</html>
