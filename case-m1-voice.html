@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brand voice system | M1 | Emily Hegland</title>
 <meta name="description" content="Case study: building a modular, versioned brand voice system that gets anyone at M1 to an on-voice first draft. Compliance still reviews every piece.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +32,7 @@
   <section class="cs-head">
     <div class="wrap">
       <p class="eyebrow eyebrow--clay">
-        <a href="index.html#work" style="color: inherit;">← All work</a>
+        <a class="link-plain" href="index.html#work">← All work</a>
       </p>
       <h1>Brand voice system</h1>
       <p class="lede">
@@ -124,25 +127,25 @@
       </div>
 
       <!-- Architecture diagram. Structure only, no module contents. -->
-      <div style="margin: var(--s4) 0; padding: var(--s4); background: var(--paper-card); border: 1px solid var(--rule); border-radius: var(--radius);">
-        <p style="font-family: var(--body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin-bottom: var(--s2);">Always loaded</p>
-        <div class="grid" style="gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));">
-          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
-            <strong style="font-family: var(--display); font-size: 1.0625rem;">Philosophy</strong>
-            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">North star, audience, how to read a brief</p>
+      <div class="panel">
+        <p class="label-clay">Always loaded</p>
+        <div class="grid grid--gap-2 grid--fit-150">
+          <div class="note-card">
+            <strong class="serif-strong">Philosophy</strong>
+            <p class="note-small">North star, audience, how to read a brief</p>
           </div>
-          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
-            <strong style="font-family: var(--display); font-size: 1.0625rem;">Voice &amp; tone</strong>
-            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">Energy, formality, principles, non-negotiables</p>
+          <div class="note-card">
+            <strong class="serif-strong">Voice &amp; tone</strong>
+            <p class="note-small">Energy, formality, principles, non-negotiables</p>
           </div>
-          <div style="border: 1px solid var(--rule); border-left: 3px solid var(--clay); border-radius: var(--radius); padding: var(--s2); background: var(--paper-deep);">
-            <strong style="font-family: var(--display); font-size: 1.0625rem;">Compliance</strong>
-            <p style="margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink-soft);">FINRA 2210 patterns, disclosure library</p>
+          <div class="note-card">
+            <strong class="serif-strong">Compliance</strong>
+            <p class="note-small">FINRA 2210 patterns, disclosure library</p>
           </div>
         </div>
 
-        <p style="font-family: var(--body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin: var(--s3) 0 var(--s2);">Loaded to match the task</p>
-        <ul class="workitem__tags" style="margin: 0;">
+        <p class="label-sage">Loaded to match the task</p>
+        <ul class="workitem__tags m-0">
           <li class="tag">Email</li>
           <li class="tag">Push notifications</li>
           <li class="tag">In-app messages</li>
@@ -266,5 +269,6 @@
 
 <script src="lightbox.js"></script>
 
+<script src="nav.js"></script>
 </body>
 </html>

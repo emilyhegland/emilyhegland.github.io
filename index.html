@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emily Hegland | Copywriter, Chicago</title>
 
-<!-- SEO + link previews. This is what shows up in Google and when someone
-     pastes your URL into Slack or LinkedIn. Currently your live site puts the
-     hobby sentence here; this puts the job first. -->
 <meta name="description" content="Emily Hegland is a Chicago copywriter. Ten years of making tough concepts simple, mostly about money. Copy for M1, Humana, The Hartford, and Fundbox.">
 <meta property="og:title" content="Emily Hegland | Copywriter, Chicago">
 <meta property="og:description" content="Chicago copywriter. Ten years of making tough concepts simple, mostly about money. Copy for M1, Humana, The Hartford, and Fundbox.">
@@ -19,6 +16,9 @@
 <meta property="og:image:alt" content="Emily Hegland, copywriter, Chicago">
 <meta name="twitter:card" content="summary_large_image">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
     <a class="wordmark" href="index.html">Emily Hegland</a>
     <nav aria-label="Main">
       <ul class="nav">
-        <li><a href="#work">Copywriting</a></li>
+        <li><a href="copywriting.html">Copywriting</a></li>
         <li><a href="writing.html">Published works</a></li>
         <li><a href="textiles.html">Textiles</a></li>
         <li><a href="about.html">About</a></li>
@@ -65,7 +65,7 @@
         </div>
 
         <p class="hero__cta">
-          <a class="btn" href="#work">Start reading</a>
+          <a class="btn" href="#work">See selected work</a>
         </p>
       </div>
 
@@ -80,42 +80,74 @@
 
   <hr class="rule">
 
-  <span id="work"></span>
-  <!-- =============================================================== 04 VIDEO -->
-  <section class="section section--tight" id="product">
+  <!-- ===================================================== SELECTED WORK -->
+  <!-- Four pieces, strongest first. The full portfolio lives on copywriting.html. -->
+  <section class="section section--tight" id="work">
     <div class="wrap">
 
-      <article class="workitem" style="grid-template-columns: minmax(0, 1fr); border-top: 0;">
-        <div>
-          <div class="workitem__head">
-            <div>
-              <p class="card__kicker">M1</p>
-              <h3 style="margin-bottom: var(--s2);">App Store screens</h3>
-            </div>
-            <p style="margin: 0;">
-              Twelve screens scrolled through in seconds to understand a brand.
-              Product visual is the nail, copy is the hammer.
-            </p>
-          </div>
+      <div class="section-head">
+        <p class="eyebrow">Selected work</p>
+      </div>
 
-          <div class="grid" style="margin-top: var(--s4); gap: var(--s3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));">
-            <img src="images/m1-appstore-1.jpg"
-                 alt="M1 Apple App Store screens, first set"
-                 data-lb
-                 data-caption="M1, Apple App Store screens (1 of 2)"
-                 style="border: 1px solid var(--rule); border-radius: var(--radius);">
-            <img src="images/m1-appstore-2.jpg"
-                 alt="M1 Apple App Store screens, second set"
-                 data-lb
-                 data-caption="M1, Apple App Store screens (2 of 2)"
-                 style="border: 1px solid var(--rule); border-radius: var(--radius);">
+      <!-- ============================================================ BULL -->
+      <article class="workitem workitem--spot">
+        <div class="workitem__text">
+          <p class="card__kicker">M1</p>
+          <h3>&ldquo;Bull&rdquo;</h3>
+          <p>
+            How do we get people&rsquo;s attention during an ad break? Answer: cursing.
+          </p>
+        </div>
+
+        <div class="matte">
+          <div class="matte__mount">
+            <button class="poster poster--3x2" data-video="videos/bull.mp4" data-ratio="3x2"
+                    aria-label="Play the M1 spot &quot;Bull&quot;">
+              <img width="720" height="480" src="images/poster-bull.jpg" alt="A bull slumped at a bar beside a whiskey bottle, with the line &quot;yeah, bear markets are bull$#!t&quot;">
+              <span class="poster__play"><span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span></span>
+              <span class="poster__label"><strong>&ldquo;Bull&rdquo;</strong>M1 · national TV, :30</span>
+            </button>
           </div>
         </div>
       </article>
 
+      <!-- ======================================================== EMILYBOT -->
       <article class="workitem">
         <div class="workitem__media">
-          <img src="images/sm-m1-site-page.jpg"
+          <div class="term" role="img" aria-label="Terminal showing the /emilybot Claude skill, with philosophy, voice and tone, and compliance always loaded, and channel guides loaded per task">
+            <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="term__body" aria-hidden="true">
+              <p class="term__cmd"><i>/</i>emilybot</p>
+              <p class="term__label">Always loaded</p>
+              <ul class="term__list">
+                <li>Philosophy</li>
+                <li>Voice &amp; tone</li>
+                <li>Compliance</li>
+              </ul>
+              <p class="term__label">Loaded per task</p>
+              <p class="term__tasks">Email &middot; Push &middot; In-app &middot; Banners &middot; Web &middot; Blog &middot; UX microcopy</p>
+            </div>
+          </div>
+        </div>
+        <div class="workitem__text">
+          <p class="card__kicker">M1</p>
+          <h3>Brand voice system</h3>
+          <p>
+            I turned a brand voice into a learning, growing Claude skill. I call it
+            the emilybot.
+          </p>
+          <p class="mt-3">
+            <a class="btn btn--ghost" href="case-m1-voice.html">Read the case study</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- ====================================================== M1 WEBSITE -->
+      <article class="workitem workitem--flip">
+        <div class="workitem__media">
+          <img width="1300" height="692" src="images/sm-m1-site-page.jpg"
                data-full="images/m1-site-page.jpg"
                alt="M1 marketing site page"
                data-caption="M1, marketing site copy">
@@ -126,194 +158,16 @@
           <p>
             The landing page is the front door for a brand. This is M1&rsquo;s.
           </p>
-          <p style="margin-top: var(--s3);">
+          <p class="mt-3">
             <a class="btn btn--ghost" href="case-m1-web.html">Read the case study</a>
           </p>
         </div>
       </article>
 
-    </div>
-  </section>
-
-  <section class="section section--tight section--deep" id="voice">
-    <div class="wrap">
-
-      <article class="workitem workitem--flip">
-        <div class="workitem__media">
-          <!-- Architecture, not contents. Shows the shape of the system without
-               publishing a line of internal material. -->
-          <div style="background: var(--paper-card); border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--s3);">
-            <p class="eyebrow" style="margin-bottom: var(--s2);">Always loaded</p>
-            <div style="display: grid; gap: 0.4rem; margin-bottom: var(--s3);">
-              <div style="border-left: 3px solid var(--clay); background: var(--paper-deep); padding: 0.5rem 0.75rem; font-family: var(--display); font-size: 1rem;">Philosophy</div>
-              <div style="border-left: 3px solid var(--clay); background: var(--paper-deep); padding: 0.5rem 0.75rem; font-family: var(--display); font-size: 1rem;">Voice &amp; tone</div>
-              <div style="border-left: 3px solid var(--clay); background: var(--paper-deep); padding: 0.5rem 0.75rem; font-family: var(--display); font-size: 1rem;">Compliance</div>
-            </div>
-            <p class="eyebrow" style="margin: var(--s3) 0 var(--s1);">Loaded per task</p>
-            <p style="margin: 0; font-family: var(--body); font-size: 0.8125rem; line-height: 1.7; color: var(--ink-soft);">
-              Email &middot; Push &middot; In-app &middot; Banners &middot; Web &middot; Blog &middot; UX microcopy
-            </p>
-          </div>
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">M1</p>
-          <h3>Brand voice system</h3>
-          <p>
-            I turned a brand voice into a learning, growing Claude skill. I call it
-            the emilybot.
-          </p>
-          <p style="margin-top: var(--s3);">
-            <a class="btn btn--ghost" href="case-m1-voice.html">Read the case study</a>
-          </p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section section--tight" id="video">
-    <div class="wrap">
-
-      <!-- ============================================================ BULL -->
-      <article class="spot">
-        <button class="poster poster--3x2" data-video="videos/bull.mp4" data-ratio="3x2"
-                aria-label="Play the M1 spot &quot;Bull&quot;">
-          <img src="images/poster-bull.jpg" alt="A bull slumped at a bar beside a whiskey bottle, with the line &quot;yeah, bear markets are bull$#!t&quot;">
-          <span class="poster__play"><span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </span></span>
-          <span class="poster__label"><strong>&ldquo;Bull&rdquo;</strong>M1 · national TV, :30</span>
-        </button>
-
-        <div style="margin-top: var(--s3);">
-            <h3 style="margin-bottom: var(--s2);">&ldquo;Bull&rdquo;</h3>
-            <p style="color: var(--ink-soft); margin: 0;">
-              How do we get people&rsquo;s attention during an ad break? Answer: cursing.
-            </p>
-            <p class="spot__meta">
-              <span>Written for broadcast</span>
-              <span>Cut down for digital</span>
-            </p>
-          </div>
-      </article>
-
-      <!-- =========================================================== YIELD -->
-      <article class="spot">
-        <button class="poster" data-video="videos/yield.mp4"
-                aria-label="Play the M1 spot &quot;Yield&quot;">
-          <img src="images/poster-yield.jpg" alt="An illustrated tree heavy with fruit beside the line &quot;Earn a fruitful 5.00% APY on your savings balance&quot;">
-          <span class="poster__play"><span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </span></span>
-          <span class="poster__label"><strong>&ldquo;Yield&rdquo;</strong>M1 · TV &amp; digital, :15</span>
-        </button>
-
-        <div style="margin-top: var(--s3);">
-            <h3 style="margin-bottom: var(--s2);">&ldquo;Yield&rdquo;</h3>
-            <p style="color: var(--ink-soft); margin: 0;">
-              Bank ads are full of abbreviations. So this spot takes that 15 seconds
-              it has to define one of those using animation. Since the metaphor does
-              the explaining, the copy can stay short.
-            </p>
-            <p class="spot__meta">
-              <span>High-Yield Savings launch</span>
-              <span>Rate shown is from the original 2023 flight</span>
-            </p>
-          </div>
-      </article>
-
-      <!-- =================================================== DECIMAL DUST -->
-      <article class="spot">
-        <button class="poster" data-video="videos/decimal-dust.mp4"
-                aria-label="Play the M1 spot &quot;Decimal Dust&quot;">
-          <img src="images/poster-decimal-dust.jpg" alt="0.01% APY shown in red beside Chase, Bank of America and US Bank logos, with the line &quot;The biggest banks out there have the smallest returns&quot;">
-          <span class="poster__play"><span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </span></span>
-          <span class="poster__label"><strong>&ldquo;Decimal Dust&rdquo;</strong>M1 · TV &amp; digital, :30</span>
-        </button>
-
-        <div style="margin-top: var(--s3);">
-            <h3 style="margin-bottom: var(--s2);">&ldquo;Decimal Dust&rdquo;</h3>
-            <p style="color: var(--ink-soft); margin: 0;">
-              Big banks have low savings rates. But the main reason people bail on
-              them is simply inertia. We needed these people to visualize the
-              difference between 0.01% and 5.00%. Do the math.
-            </p>
-            <p class="spot__meta">
-              <span>High-Yield Savings</span>
-              <span>Rates shown are from the original 2023 flight</span>
-            </p>
-          </div>
-      </article>
-
-
-    </div>
-  </section>
-
-  <section class="section section--tight section--deep" id="edrop">
-    <div class="wrap">
-
-      <article class="workitem" style="grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--rule);">
-        <div>
-          <!-- Header runs the full width: title and tags left, intro right. Keeps
-               the block as wide as the images below it without pushing body copy
-               out to an unreadable line length. -->
-          <div class="workitem__head">
-            <div>
-              <p class="card__kicker">eDrop-Off</p>
-              <h3 style="margin-bottom: var(--s2);">Luxury resale product copy</h3>
-            </div>
-            <p style="margin: 0;">
-              Handbags, jewelry, hats, and scarves I inspected by hand.
-              High-volume bespoke product copy.
-            </p>
-          </div>
-
-          <div class="grid" style="margin-top: var(--s4); gap: var(--s3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));">
-            <img src="images/edrop-chanel-camellia.jpg"
-                 alt="eDrop-Off listing for a Chanel black and gold camellia lambskin mini flap bag, opening with the line &quot;Avant-garden!&quot;"
-                 data-lb
-                 data-caption="eDrop-Off, Chanel camellia mini flap. Opener: &ldquo;Avant-garden!&rdquo;"
-                 style="border: 1px solid var(--rule); border-radius: var(--radius);">
-            <img src="images/edrop-chanel-earrings.jpg"
-                 alt="eDrop-Off listing for Chanel gold cage monogram clip-on earrings, opening with a line about the caged bird singing"
-                 data-lb
-                 data-caption="eDrop-Off, Chanel cage monogram earrings. Opener: &ldquo;I know why the caged bird sings&hellip;&rdquo;"
-                 style="border: 1px solid var(--rule); border-radius: var(--radius);">
-            <img src="images/edrop-hermes-scarf.jpg"
-                 alt="eDrop-Off listing for a Hermes pink Belles Amures silk scarf by Loic Dubigeon"
-                 data-lb
-                 data-caption="eDrop-Off, Herm&egrave;s &ldquo;Belles Amures&rdquo; silk scarf"
-                 style="border: 1px solid var(--rule); border-radius: var(--radius);">
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section section--tight" id="direct">
-    <div class="wrap">
-
+      <!-- ======================================================== HUMANA -->
       <article class="workitem">
         <div class="workitem__media">
-          <img src="images/dm-humana-ppo-buckslips.jpg"
-               alt="Humana Medicare PPO acquisition campaign pieces"
-               data-caption="Humana, Medicare PPO acquisition. Annual Enrollment Period mail">
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">Humana</p>
-          <h3>Medicare PPO acquisition</h3>
-          <p>
-            Annual Enrollment Period mail for Medicare-eligible folks. The goal: stand out in a sea of similar offers.
-          </p>
-        </div>
-      </article>
-
-      <article class="workitem workitem--flip">
-        <div class="workitem__media">
-          <img src="images/dm-humana-dental.jpg"
+          <img width="1100" height="550" src="images/dm-humana-dental.jpg"
                alt="Humana Medicare Advantage dental direct mail"
                data-caption="Humana, Medicare Advantage dental control buster">
         </div>
@@ -327,69 +181,9 @@
         </div>
       </article>
 
-      <article class="workitem">
-        <div class="workitem__media">
-          <img src="images/dm-fundbox-open-box.jpg"
-               alt="Fundbox B2B direct mail acquisition package"
-               data-caption="Fundbox, B2B acquisition package">
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">Fundbox</p>
-          <h3>B2B acquisition campaign</h3>
-          <p>
-            Small-business lending, addressed to owners who were already drowning in
-            mail. The envelope had to do most of the work.
-          </p>
-        </div>
-      </article>
-
-      <article class="workitem workitem--flip">
-        <div class="workitem__media">
-          <img src="images/dm-hartford-aarp.jpg"
-               alt="The Hartford space ads in AARP Magazine"
-               data-caption="The Hartford, AARP Magazine space ads">
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">The Hartford</p>
-          <h3>AARP Magazine space ads</h3>
-          <p>
-            Insurance space for the AARP audience. Appeals to budget-minded, responsible drivers of a certain age.
-          </p>
-        </div>
-      </article>
-
-      <article class="workitem">
-        <div class="workitem__media">
-          <img src="images/dm-consumers-energy.jpg"
-               alt="Consumers Energy appliance service plan retention campaign"
-               data-caption="Consumers Energy, appliance plan retention across mail, email and digital">
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">Consumers Energy</p>
-          <h3>Appliance plan retention</h3>
-          <p>
-            A retention campaign across mail, email, and digital.
-            Previously, new customers signed up and never heard another word until
-            something went wrong. Now they got a year-long welcome package.
-          </p>
-        </div>
-      </article>
-
-      <article class="workitem workitem--flip">
-        <div class="workitem__media">
-          <img src="images/dm-igs-new-mover.jpg"
-               alt="IGS Energy new mover self-mailer"
-               data-caption="IGS Energy, new mover self-mailer">
-        </div>
-        <div class="workitem__text">
-          <p class="card__kicker">IGS Energy</p>
-          <h3>New mover self-mailer</h3>
-          <p>
-            Written to reach people during the two-week window when they're
-            actually willing to switch providers.
-          </p>
-        </div>
-      </article>
+      <p class="section-more section-more--centre mt-4">
+        <a class="btn" href="copywriting.html">See all copywriting</a>
+      </p>
 
     </div>
   </section>
@@ -404,7 +198,8 @@
 
       <div class="grid grid--two">
 
-        <a class="card" href="writing.html">
+        <a class="card card--row" href="writing.html">
+          <div class="card__media"><img src="images/packingtown-review.jpg" width="320" height="320" alt="Cover of Packingtown Review, Issue 21" loading="lazy"></div>
           <div class="card__body">
             <p class="card__kicker">Creative writing</p>
             <h3>Published works</h3>
@@ -414,7 +209,8 @@
           </div>
         </a>
 
-        <a class="card" href="textiles.html">
+        <a class="card card--row" href="textiles.html">
+          <div class="card__media"><img src="images/reel-embroidery-chard.jpg" width="720" height="900" alt="Hand embroidery of a rainbow chard leaf in a small hoop" loading="lazy"></div>
           <div class="card__body">
             <p class="card__kicker">Textile arts</p>
             <h3>Quilts and embroidery</h3>
@@ -488,7 +284,7 @@
       <div>
         <p class="eyebrow">Elsewhere on this site</p>
         <ul class="contact-list">
-          <li><a href="#work">Copywriting</a></li>
+          <li><a href="copywriting.html">Copywriting</a></li>
           <li><a href="writing.html">Published works</a></li>
           <li><a href="textiles.html">Textiles</a></li>
           <li><a href="about.html">About</a></li>
@@ -507,5 +303,6 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script src="nav.js"></script>
 </body>
 </html>

@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marketing site copy | M1 | Emily Hegland</title>
 <meta name="description" content="Case study: writing M1's marketing site pages, shown as copy decks with the reasoning behind each decision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +32,7 @@
   <section class="cs-head">
     <div class="wrap">
       <p class="eyebrow eyebrow--clay">
-        <a href="index.html#work" style="color: inherit;">&larr; All work</a>
+        <a class="link-plain" href="index.html#work">&larr; All work</a>
       </p>
       <h1>Marketing site copy</h1>
       <p class="lede">
@@ -49,7 +52,7 @@
 
     <!-- ========================================================== PROBLEM -->
     <section class="cs-block">
-      <p class="eyebrow">01 &middot; The problem</p>
+      <p class="eyebrow">The problem</p>
       <h2>New positioning, old branding</h2>
       <div class="prose">
         <p>
@@ -67,7 +70,7 @@
 
     <!-- ========================================================= SOLUTION -->
     <section class="cs-block">
-      <p class="eyebrow">02 &middot; The solution</p>
+      <p class="eyebrow">The solution</p>
       <h2>A full refresh</h2>
       <div class="prose">
         <p>
@@ -78,8 +81,8 @@
         </p>
       </div>
 
-      <div class="workitem__media" style="max-width: 720px; margin-top: var(--s4);">
-        <img src="images/sm-m1-site-page.jpg"
+      <div class="workitem__media mt-4 maxw-720">
+        <img width="1300" height="692" src="images/sm-m1-site-page.jpg"
              data-full="images/m1-site-page.jpg"
              data-lb loading="lazy"
              alt="The M1 homepage hero, reading &quot;Sophisticated wealth building, simplified&quot;"
@@ -89,7 +92,7 @@
         Homepage hero, the new tagline in place. Click to open it full size.
       </p>
 
-      <p class="deck__note" style="margin-top: var(--s4);">
+      <p class="deck__note mt-4">
         <strong>Why decks instead of screenshots</strong>
         A screenshot of a landing page is hard to read, especially when it has
         interactive elements built in. The copy deck is the scaffolding that helps
@@ -101,7 +104,7 @@
 
     <!-- =========================================================== DECK 1 -->
     <section class="cs-block">
-      <p class="eyebrow">03 &middot; Work sample</p>
+      <p class="eyebrow">Work sample</p>
       <h2>The homepage, annotated</h2>
 
       <div class="deck">
@@ -258,7 +261,7 @@
 
     <!-- =========================================================== DECK 2 -->
     <section class="cs-block">
-      <p class="eyebrow">04 &middot; Writing for motion</p>
+      <p class="eyebrow">Writing for motion</p>
       <h2>A page where the pictures move</h2>
 
       <div class="prose">
@@ -269,11 +272,11 @@
         </p>
       </div>
 
-      <div style="margin-top: var(--s4);">
+      <div class="mt-4">
         <button class="poster poster--light" data-video="videos/pie-carousel.mp4"
                 data-silent="true" data-bg="light"
                 aria-label="Play the M1 Pie carousel, all seven steps, 46 seconds, no sound">
-          <img src="images/poster-pie-carousel.jpg" loading="lazy"
+          <img width="1600" height="900" src="images/poster-pie-carousel.jpg" loading="lazy"
                alt="The first carousel step, reading &quot;Your M1 portfolio is shown as a Pie&quot; beside an animated Pie chart">
           <span class="poster__play"><span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -285,7 +288,7 @@
         Watch the headlines get shorter as the animation takes over the explaining.
       </p>
 
-      <div class="deck" style="margin-top: var(--s5);">
+      <div class="deck mt-5">
         <div class="deck__head">
           <h3>Brokerage</h3>
           <span class="deck__url">m1.com/invest/brokerage</span>
@@ -414,7 +417,7 @@
 
     <!-- ============================================================ INDEX -->
     <section class="cs-block">
-      <p class="eyebrow">05 &middot; Everything else</p>
+      <p class="eyebrow">Everything else</p>
       <h2>The rest of the site</h2>
       <ul class="page-index">
         <li><a href="https://m1.com/earn/high-yield-cash-accounts/">High-Yield Cash Accounts</a> <span>Earn product page</span></li>
@@ -430,7 +433,7 @@
 
       <p class="fineprint fineprint--bare">Live as of August 2026</p>
 
-      <p style="margin-top: var(--s5);">
+      <p class="mt-5">
         <a class="btn btn--ghost" href="index.html#work">&larr; Back to all work</a>
       </p>
     </section>
@@ -475,5 +478,6 @@
 <script src="player.js"></script>
 <script src="lightbox.js"></script>
 
+<script src="nav.js"></script>
 </body>
 </html>
