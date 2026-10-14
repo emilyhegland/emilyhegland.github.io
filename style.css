@@ -44,7 +44,7 @@
 
   --max:      1200px;
   --max-prose: 66ch;
-  --radius:   3px;
+  --radius:   14px;
 }
 
 /* --------------------------------------------------------------- reset --- */
@@ -265,7 +265,7 @@ p:last-child { margin-bottom: 0; }
    left column: with it in there the two columns could only align at the kicker,
    which put the copy above the headline instead of level with it. */
 
-.about-open { padding-block: clamp(1.5rem, 3.5vw, 2.5rem) var(--s4); }
+.about-open { padding-block: clamp(1.5rem, 3.5vw, 2.5rem) var(--s3); }
 .about-open > .wrap > .eyebrow { margin-bottom: var(--s2); }
 
 .about-open__grid {
@@ -1317,49 +1317,6 @@ p:last-child { margin-bottom: 0; }
    instead of orphaning its last word. */
 .section-more { margin-top: var(--s5); }
 
-/* Homepage picture reel: five square-ish frames running the full width, with the
-   heading doing all the talking. Visuals lead here; the About page carries the
-   prose, so repeating it on the homepage only diluted both. */
-.reel {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--s2);
-}
-
-.reel figure {
-  margin: 0;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--paper-deep);
-}
-
-.reel img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Empty slot reads as intentional until a photo lands in it. */
-.reel figure:empty,
-.reel .slot {
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: var(--s1);
-  font-size: 0.6875rem;
-  line-height: 1.35;
-  color: var(--ink-faint);
-}
-
-/* Below tablet the reel scrolls sideways rather than shrinking to thumbnails. */
-@media (max-width: 760px) {
-  .reel {
-    grid-template-columns: repeat(5, minmax(38%, 1fr));
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    padding-bottom: var(--s1);
-    scrollbar-width: thin;
-  }
-  .reel figure { scroll-snap-align: start; }
-}
-
 .section-more p {
   color: var(--ink-soft);
   max-width: 70ch;
@@ -1712,7 +1669,7 @@ p:last-child { margin-bottom: 0; }
 .term {
   background: #141311;
   color: #EDEAE5;
-  border-radius: 6px;
+  border-radius: var(--radius);
   overflow: hidden;
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.6);
@@ -1911,3 +1868,31 @@ p:last-child { margin-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   .nav-toggle__icon::before, .nav-toggle__icon::after { transition: none; }
 }
+
+
+/* The poster sits inside a mount, so its corners are tighter than the mount's. */
+.matte .poster { border-radius: 8px; }
+
+/* "My muses": copy on the left, a small framed photo on the right, in the same
+   bracketed frame as the portraits so it reads as part of the About page rather
+   than something added to the bottom of it. */
+.muses {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: var(--s5);
+  align-items: center;
+}
+.muses__text h2 { font-size: clamp(2rem, 4.2vw, 3rem); margin-bottom: var(--s2); }
+.muses__text p:not(.eyebrow) { color: var(--ink-soft); font-size: 1.1875rem; max-width: 44ch; }
+/* Each sentence sits on its own line when there is room, and wraps cleanly when
+   there is not. */
+.muses__text p span { display: block; text-wrap: balance; }
+.muses__photo { justify-self: end; width: 100%; }
+
+@media (max-width: 860px) {
+  .muses { grid-template-columns: minmax(0, 1fr); gap: var(--s4); }
+  .muses__photo { justify-self: start; max-width: 380px; }
+}
+
+/* Sits on the page background, close under the bio. */
+.muses-section { padding-block: var(--s2) var(--s4); }
