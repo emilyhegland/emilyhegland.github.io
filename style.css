@@ -140,7 +140,33 @@ p:last-child { margin-bottom: 0; }
 
 .site-head {
   padding-block: var(--s3);
-  border-bottom: 1px solid var(--rule);
+}
+
+/* Clay checkerboard, two rows of 10px squares. One under the menu (standing in
+   for the old divider rule) and one above the copyright line. Both run edge to
+   edge. --check sets the square size; --check-bg matches the light squares to
+   whatever surface the stripe sits on, so only the clay reads. background-repeat:
+   round stretches the squares a hair so the stripe always ends on a whole one. */
+.checker {
+  --check: 10px;
+  --check-bg: var(--paper);
+  height: calc(var(--check) * 2);
+  background-color: var(--check-bg);
+  background-image: conic-gradient(var(--clay) 90deg, var(--check-bg) 90deg 180deg, var(--clay) 180deg 270deg, var(--check-bg) 270deg);
+  background-size: calc(var(--check) * 2) calc(var(--check) * 2);
+  background-repeat: round;
+}
+
+.checker--foot {
+  --check-bg: var(--paper-deep);
+  margin-top: var(--s4);
+}
+
+/* The footer stripe replaces the copyright line's top rule. */
+.checker--foot + .wrap .fineprint {
+  margin-top: var(--s3);
+  padding-top: 0;
+  border-top: 0;
 }
 
 .site-head__inner {
